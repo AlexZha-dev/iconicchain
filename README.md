@@ -60,30 +60,6 @@ docker compose exec web python app/manage.py migrate
 
 The application is available at <http://localhost:8000/>.
 
-## Viewing the database
-
-PostgreSQL is exposed only on the local computer at `localhost:5433`: it is bound to `127.0.0.1`, so it is not reachable from the local network. PostgreSQL continues to use port `5432` inside Docker.
-
-`POSTGRES_EXPOSED_PORT` controls the port on the host computer and defaults to `5433`. `POSTGRES_PORT=5432` is used by the application to connect to `db` inside Docker and should not be changed for this setup.
-
-Use these values in DBeaver or pgAdmin:
-
-| Field | Value |
-| --- | --- |
-| Host | `localhost` |
-| Port | `POSTGRES_EXPOSED_PORT` from `.env` (defaults to `5433`) |
-| Database | `POSTGRES_DB` from `.env` |
-| User | `POSTGRES_USER` from `.env` |
-| Password | `POSTGRES_PASSWORD` from `.env` |
-
-Alternatively, open `psql` inside the container:
-
-```powershell
-docker compose exec db psql -U file_storage -d file_storage
-```
-
-If your database or user has a different name, substitute the matching `POSTGRES_DB` and `POSTGRES_USER` values from `.env`.
-
 ## First administrator
 
 A superuser must belong to an organization. Create an organization first and note the printed ID:
