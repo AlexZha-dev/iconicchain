@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     "storage.apps.StorageConfig",
 ]
 
+AUTH_USER_MODEL = "accounts.User"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
